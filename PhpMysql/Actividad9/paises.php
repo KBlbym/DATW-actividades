@@ -1,4 +1,5 @@
 <?php
+include('admin/session.php');
     $titulo = "Paises";
     require("conection.php");
     include 'clases/MainClass.php';
@@ -17,10 +18,12 @@
     
 ?>
 <?php
-    include 'html/head.php';
+    include 'shared/html/head.php';
 ?>
 <body>
-    <main class="main p-5" style="max-width: 680px;">
+<div class="container d-flex h-100 p-3 mx-auto flex-column">
+        <?php include('shared/html/header.php');?>
+        <main role="main" class="inner cover">
         
         <div class="card">
             <div class="card-header text-center bg-primary">
@@ -44,6 +47,8 @@
         </div>
 
     </main>
+</div>
+<?php include('shared/html/footer.php');?>
 </body>
 
 </html>

@@ -1,4 +1,5 @@
 <?php
+    include('admin/session.php');
     $titulo = "Paises";
     require("conection.php");
     include 'clases/MainClass.php';
@@ -6,10 +7,12 @@
     $htmlcontent="";
 ?>
 <?php
-    include 'html/head.php';
+    include 'shared/html/head.php';
 ?>
 <body>
-    <main class="main p-5" style="max-width: 680px;">
+<div class="container d-flex h-100 p-3 mx-auto flex-column">
+        <?php include('shared/html/header.php');?>
+        <main role="main" class="inner cover">
         <?php
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
@@ -43,6 +46,8 @@
         </div>
 
     </main>
+    <?php include('shared/html/footer.php');?>
+</div>
 </body>
 
 </html>

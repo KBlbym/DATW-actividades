@@ -1,4 +1,5 @@
 <?php
+include('admin/session.php');
 if(isset($_GET["country"]) && !empty($_GET["country"])){
     $titulo = "Ciudades de ".$_GET["country"];
     $pais=$_GET["country"];
@@ -25,7 +26,7 @@ else{
     
 ?>
 <?php
-    include 'html/head.php';
+    include 'shared/html/head.php';
 ?>
 <body>
     <main class="main p-5" style="max-width: 680px;">

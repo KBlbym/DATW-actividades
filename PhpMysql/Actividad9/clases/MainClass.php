@@ -36,6 +36,7 @@
             mysqli_close($conn); 
             return $result;
         }
+        
 
         public static function  getCitiesByCountryNameAjax($conn, $query){
             $sql = "SELECT country.Name
@@ -43,6 +44,45 @@
             $result =  $conn->query($sql);
             mysqli_close($conn); 
             return $result;
+        }
+        public static function  getUsersLoginMysqli($conn, $email,$pass){
+            ////da un error si se cambia el variable resultado a result///
+            //MySQLi with Prepared Statements
+            $sql = $conn->prepare("SELECT * FROM usuarios WHERE email=?");
+            $sql->bind_param("s", $email);
+            $sql->execute();
+            $resultado = $sql->get_result();
+            $count = mysqli_num_rows($resultado);
+            if ($resultado->num_rows > 0) {
+                $row = $resultado->fetch_assoc();
+                
+            }
+            mysqli_close($conn); 
+            return $resultado;
+
+            //
+        }
+        //MySQLi with Prepared Statements
+        public static function  validateUserLoginPDO($context, $email,$pass){
+            ////da un error si se cambia el variable resultado a result///
+            
+            $statment = $context->prepare("SELECT * FROM usuarios WHERE email= :email");
+            $statment->bindParam(":email", $email);
+            $statment->execute();
+            $count=$statment->rowCount();
+            if($count ==1){
+                $userData=$statment->fetch(PDO::FETCH_OBJ);
+                //$isPassValid = password_verify($pass, $data->pass);
+                $isPassValid = strcmp($pass, $userData->pass);;
+                if($isPassValid == 0){
+                    return $userData; 
+                }else{
+                    return null;
+                }
+            }
+            else{
+                return null;
+            }
         }
 
         // public static function createCitiesTemplate($result){

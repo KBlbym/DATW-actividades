@@ -1,4 +1,5 @@
 <?php
+include('admin/session.php');
 if(isset($_GET["q"]) && !empty($_GET["q"])){
     $titulo = "";
     $pais="";
@@ -28,7 +29,7 @@ else{
     
 ?>
 <?php
-    include 'html/head.php';
+    include 'shared/html/head.php';
 ?>
 <body>
     <main class="main p-5" style="max-width: 680px;">
