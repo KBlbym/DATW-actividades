@@ -1,0 +1,1 @@
+<?php header("location: Pages/Posts/index.php");?>

@@ -4,7 +4,7 @@ if($isAdmin){
 $addNew = '<a class="btn btn-info btn-sm" href="create.php"><i class="fas fa-plus" aria-hidden="true"></i></a>';
 }else{
     $addNew = "";
-
+}
 $titulo = "Bienvenido " . $_SESSION['name'];
 require("../../PDOContext.php");
 include '../../Models/User.php';
